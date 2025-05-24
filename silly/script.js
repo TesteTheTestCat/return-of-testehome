@@ -20,7 +20,7 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += 1/tickspersecond
+    player.sillytime += 0.001/tickspersecond
 
     ticktime -= 1/tickspersecond
   }
