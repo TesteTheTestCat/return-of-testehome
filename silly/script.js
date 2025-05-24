@@ -22,7 +22,7 @@ function showtext(){
   }
 }
 function assignonclick(){
-    tabnumbers = [0,1,-1]
+    let tabnumbers = [0,1,-1]
     for (i in tabnumbers){
       gel("tb_"+i).onclick = () => {tabstuff(i)}
     }
@@ -57,7 +57,7 @@ function buyitem(a){
   }
 }
 function tabstuff(tab){
-  tabnumbers = [0,1,-1]
+  let tabnumbers = [0,1,-1]
   for (i in tabnumbers){
     gel("tab_"+i).style.display = "none"
   }
