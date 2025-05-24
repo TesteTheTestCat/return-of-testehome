@@ -38,3 +38,27 @@ export function format(x,l=true){
 export function intformat(x){
   return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, "'")
 }
+export function timeformat(x){
+  if (x < 1){
+    return intformat(x*1000)+"ms"
+  }
+  if (x < 60){
+    return format(x)+"s"
+  }
+  if (x < 3600){
+    return intformat(x/60)+"m"+format(x%60)+"s"
+  }
+  if (x < 86400){
+    return intformat(x/3600)+"h"+format((x/60)%60)+"m"
+  }
+  if (x < 604800){
+    return intformat(x/86400)+"d"+format((x/3600)%24)+"h"
+  }
+  if (x < 2629743.12){
+    return intformat(x/604800)+"w"+format((x/86400)%7)+"d"
+  }
+  if (x < 31556917.44){
+    return intformat(x/2629743.12)+"mo"+format((x/604800)%30.4368416667)+"w"
+  }
+  return intformat(x/31556917.44)+"y"+format((x/2629743.12)%12)+"mo"
+}

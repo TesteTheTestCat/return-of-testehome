@@ -1,4 +1,4 @@
-import { format, intformat } from "./format.js";
+import { format, intformat, timeformat } from "./format.js";
 const framespersecond = 60
 const tickspersecond = 30
 const gel = (name) => document.getElementById(name)
@@ -7,7 +7,7 @@ let player = {
     lasttick: Date.now()
 }
 function showtext(){
-  gel("sillytime").textContent = format(player.sillytime)+"s"
+  gel("sillytime").textContent = timeformat(player.sillytime)
 }
 function assignonclick(){
     const besilly = gel("b_besilly")
