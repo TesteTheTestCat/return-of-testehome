@@ -6,3 +6,11 @@ body {
   color: white;
   text-align: center;
 }
+button {
+  font-family: 'Cascadia Mono', monospace;
+}
+#b_besilly {
+  width: 100%;
+  background-color: #670797;
+  color: #ff00ff
+}
