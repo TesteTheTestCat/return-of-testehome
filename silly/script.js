@@ -9,7 +9,7 @@ let player = {
 function showtext(){
   gel("sillytime").textContent = format(player.sillytime)+"s"
 }
-ticktime = 0
+let ticktime = 0
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
