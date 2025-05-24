@@ -9,14 +9,25 @@ body {
 button {
   font-family: 'Cascadia Mono', monospace;
   background-color: #d1d1d1;
-  color: black;
   border-color: #d1d1d1;
-  border: 3px solid;
+  border: 3px solid #d1d1d1;
   border-radius: 5px;
+  color: black
 }
 #b_besilly {
   width: 100%;
   background-color: #670797;
   color: #ff00ff;
   border-color: #670797
+}
+#b_besilly:hover {
+  width: 100%;
+  background-color: #410560;
+  color: #dd00dd;
+  border-color: #410560
+}
+td {
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
 }

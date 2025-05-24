@@ -4,13 +4,35 @@
 </head>
 <body>
     <h2>you have been silly for <span id="sillytime"></span></h2>
-    <h3>you get 1ms of silliness per second</h3>
+    <h3>you get <span id="sillygain"></span> of silliness per second</h3>
     <div>
         <button>Main</button>
         <button>Options</button>
     </div>
-    <button id="b_besilly"><div style="font-size: 2em">silly :3</div><div style="font-size: 1em">(+1ms)</div></button>
-
+    <button id="b_besilly"><div style="font-size: 2em">silly :3</div><div style="font-size: 1em">(+<span id="sillyclick"></span>ms)</div></button>
+    <br>
+    <table align="center">
+        <tr>
+          <td>faster silliness</td>
+          <td>increased silliness</td>
+          <td>the silliest :3</td>
+        </tr>
+        <tr>
+          <td>sillysillysilly!!!</td>
+          <td>i'm so silly :33</td>
+          <td>EVEN MORE SILLY :3</td>
+        </tr>
+        <tr>
+          <td>+1ms silly/s</td>
+          <td>+0.25ms silly/click</td>
+          <td>*2 ALL silly gain</td>
+        </tr>
+        <tr>
+          <td><button id="b_fastsilly">100ms</button></td>
+          <td><button id="b_increasesilly">1.5s</button></td>
+          <td><button id="b_thesilliest">1h30s</button></td>
+        </tr>
+    </table>
 <script src="./format.js" type="module"></script>
 <script src="./script.js" type="module"></script>
 </body>
