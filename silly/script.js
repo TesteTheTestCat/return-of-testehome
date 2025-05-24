@@ -16,11 +16,11 @@ function showtext(){
   gel("b_increasesilly").textContent = timeformat(1.5*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
   else {gel("b_thesilliest").textContent = "MAX"}
-  gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.0025))
+  gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
 }
 function assignonclick(){
     const besilly = gel("b_besilly")
-    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.0025)}
+    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025)}
 
     const speedup = gel("b_fastsilly")
     speedup.onclick = () => {buyitem(1)}
@@ -55,7 +55,7 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*player.fastsilly)
+    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))
 
     ticktime -= 1/tickspersecond
   }
