@@ -22,9 +22,9 @@ function showtext(){
   }
 }
 function assignonclick(){
-    let tabnumbers = [0,1,"-1"]
+    let tabnumbers = [0,1,-1]
     for (let i in tabnumbers){
-      gel("tb_"+i).onclick = () => {tabstuff(i)}
+      gel("tb_"+i).onclick = () => {tabstuff(tabnumbers[i])}
     }
     const besilly = gel("b_besilly")
     besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025)}
@@ -57,9 +57,9 @@ function buyitem(a){
   }
 }
 function tabstuff(tab){
-  let tabnumbers = [0,1,"-1"]
+  let tabnumbers = [0,1,-1]
   for (let i in tabnumbers){
-    console.log("tab_"+i)
+    console.log("tab_"+tabnumbers[i])
     gel("tab_"+i).style.display = "none"
   }
   gel("tab_"+tab).style.display = "inline"
