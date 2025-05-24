@@ -11,7 +11,7 @@ function showtext(){
 }
 function assignonclick(){
     const besilly = gel("b_besilly")
-    besilly.onclick = () => {player.sillytime += 1}
+    besilly.onclick = () => {player.sillytime += 0.001}
 }
 
 assignonclick()
