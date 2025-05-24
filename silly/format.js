@@ -36,7 +36,7 @@ export function format(x,l=true){
   }
 }
 export function intformat(x){
-  return x.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, "'")
+  return Math.floor(x).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, "'")
 }
 export function timeformat(x){
   if (x < 1){
