@@ -12,8 +12,8 @@ let player = {
 function showtext(){
   gel("sillytime").textContent = timeformat(player.sillytime)
   gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
-  gel("b_fastsilly").textContent = timeformat(0.100*(1.55**player.fastsilly))
-  gel("b_increasesilly").textContent = timeformat(1.5*(1.35**player.increasesilly))
+  gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
+  gel("b_increasesilly").textContent = timeformat(0.15*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
   else {gel("b_thesilliest").textContent = "MAX"}
   gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
@@ -31,14 +31,14 @@ function assignonclick(){
 }
 function buyitem(a){
   if (a == 1){
-    if (player.sillytime >= 0.100*(1.55**player.fastsilly)){
-      player.sillytime -= 0.100*(1.55**player.fastsilly)
+    if (player.sillytime >= 0.020*(1.55**player.fastsilly)){
+      player.sillytime -= 0.020*(1.55**player.fastsilly)
       player.fastsilly += 1
     }
   }
   if (a == 2){
-    if (player.sillytime >= 1.5*(1.35**player.increasesilly)){
-      player.sillytime -= 1.5*(1.35**player.increasesilly)
+    if (player.sillytime >= 0.150*(1.35**player.increasesilly)){
+      player.sillytime -= 0.150*(1.35**player.increasesilly)
       player.increasesilly += 1
     }
   }
