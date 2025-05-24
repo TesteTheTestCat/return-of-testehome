@@ -64,6 +64,7 @@ function tabstuff(tab){
   gel("tab_"+tab).style.display = "inline"
   currenttab = tab
 }
+tabstuff(0)
 assignonclick()
 let ticktime = 0
 setInterval(() => {
