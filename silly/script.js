@@ -24,7 +24,7 @@ function showtext(){
 function assignonclick(){
     let tabnumbers = ["0","1","-1"]
     for (let i in tabnumbers){
-      gel("tb_"+i).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
+      gel("tb_"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
     }
     const besilly = gel("b_besilly")
     besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025)}
