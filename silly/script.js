@@ -23,7 +23,7 @@ function showtext(){
 }
 function assignonclick(){
     let tabnumbers = [0,1,-1]
-    for (i in tabnumbers){
+    for (let i in tabnumbers){
       gel("tb_"+i).onclick = () => {tabstuff(i)}
     }
     const besilly = gel("b_besilly")
@@ -58,7 +58,7 @@ function buyitem(a){
 }
 function tabstuff(tab){
   let tabnumbers = [0,1,-1]
-  for (i in tabnumbers){
+  for (let i in tabnumbers){
     gel("tab_"+i).style.display = "none"
   }
   gel("tab_"+tab).style.display = "inline"
