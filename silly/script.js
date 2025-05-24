@@ -59,12 +59,14 @@ function buyitem(a){
 function tabstuff(tab){
   let tabnumbers = [0,1,-1]
   for (let i in tabnumbers){
-    console.log("tab_"+tabnumbers[i])
-    gel("tab_"+i).style.display = "none"
-  }
-  gel("tab_"+tab).style.display = "inline"
-  currenttab = tab
-}
+    let k = tabnumbers[i]
+    if (k == tab){
+       gel("tab_"+k).style.display = "inline"
+    }
+    else {
+      gel("tab_"+k).style.display = "none"
+    }
+}}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
