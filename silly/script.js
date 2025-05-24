@@ -9,6 +9,10 @@ let player = {
 function showtext(){
   gel("sillytime").textContent = format(player.sillytime)+"s"
 }
+function assignonclick(){
+    const besilly = gel("b_besilly")
+    besilly.onclick = () => {player.sillytime += 1}
+}
 let ticktime = 0
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
