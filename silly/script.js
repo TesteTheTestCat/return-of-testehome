@@ -11,9 +11,9 @@ let player = {
 }
 let currenttab = 0
 function showtext(){
-  if (currenttab == 0){
   gel("sillytime").textContent = timeformat(player.sillytime)
   gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
+  if (currenttab == 0){
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
   gel("b_increasesilly").textContent = timeformat(0.15*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
@@ -59,6 +59,7 @@ function buyitem(a){
 function tabstuff(tab){
   let tabnumbers = [0,1,"-1"]
   for (let i in tabnumbers){
+    console.log("tab_"+i)
     gel("tab_"+i).style.display = "none"
   }
   gel("tab_"+tab).style.display = "inline"
