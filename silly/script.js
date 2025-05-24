@@ -11,7 +11,7 @@ let player = {
 }
 function showtext(){
   gel("sillytime").textContent = timeformat(player.sillytime)
-  gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*player.fastsilly))
+  gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
   gel("b_fastsilly").textContent = timeformat(0.100*(1.55**player.fastsilly))
   gel("b_increasesilly").textContent = timeformat(1.5*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
