@@ -9,7 +9,9 @@ let player = {
     silliest: 0,
     lasttick: Date.now()
 }
+let currenttab = 0
 function showtext(){
+  if (currenttab == 0){
   gel("sillytime").textContent = timeformat(player.sillytime)
   gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
@@ -17,8 +19,13 @@ function showtext(){
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
   else {gel("b_thesilliest").textContent = "MAX"}
   gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
+  }
 }
 function assignonclick(){
+    tabnumbers = [0,1,-1]
+    for (i in tabnumbers){
+      gel("tb_"+i).onclick = () => {tabstuff(i)}
+    }
     const besilly = gel("b_besilly")
     besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025)}
 
@@ -48,6 +55,14 @@ function buyitem(a){
       player.silliest = 1
     }
   }
+}
+function tabstuff(tab){
+  tabnumbers = [0,1,-1]
+  for (i in tabnumbers){
+    gel("tab_"+i).style.display = "none"
+  }
+  gel("tab_"+tab).style.display = "inline"
+  currenttab = tab
 }
 assignonclick()
 let ticktime = 0
