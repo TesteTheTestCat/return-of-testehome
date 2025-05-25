@@ -1,6 +1,7 @@
 import { format, intformat, timeformat } from "./format.js";
 const framespersecond = 60
 const tickspersecond = 30
+let maxticks = 10000
 const gel = (name) => document.getElementById(name)
 let player = {
     sillytime: 0,
@@ -118,6 +119,14 @@ function cutepowerboost(x){
 function clickpowerboost(x){
   return 1+(((Math.log2(x+1))/3.7)*player.femboyupgrades[7])
 }
+function timespend(time){
+  if (time > maxticks/tickspersecond){
+    return time/maxticks
+  }
+  else {
+    return 1/tickspersecond
+  }
+}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
@@ -125,10 +134,10 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])*(1+(0.05*player.increasesilly)*player.femboyupgrades[4])*(clickpowerboost(player.clickssincelastreset))
+    player.sillytime += (1+player.silliest)*((0.001*timespend(ticktime))*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])*(1+(0.05*player.increasesilly)*player.femboyupgrades[4])*(clickpowerboost(player.clickssincelastreset))
     player.cutepower += (player.femboys/tickspersecond)*(1+0.2*player.femboyupgrades[2])*(1+0.5*player.femboyupgrades[5])
 
-    ticktime -= 1/tickspersecond
+    ticktime -= timespend(ticktime)
   }
   showtext()
 },1000/framespersecond)
