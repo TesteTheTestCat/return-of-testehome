@@ -20,7 +20,7 @@ function showtext(){
   gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001)*(player.fastsilly+1))*cutepowerboost(player.cutepower))
 
   // tab zero
-  gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
+  gel("b_fastsilly").textContent = timeformat(0.020*(1.55**(player.fastsilly-player.femboyupgrades[3]-player.femboyupgrades[6])))
   gel("b_increasesilly").textContent = timeformat(0.15*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
   else {gel("b_thesilliest").textContent = "MAX"}
@@ -43,7 +43,7 @@ function assignonclick(){
       gel("tb_"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
     }
     const besilly = gel("b_besilly")
-    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025)}
+    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025*(1+1*player.femboyupgrades[1]))}
 
     const speedup = gel("b_fastsilly")
     speedup.onclick = () => {buyitem(1)}
@@ -61,8 +61,8 @@ function assignonclick(){
 }
 function buyitem(a){
   if (a == 1){
-    if (player.sillytime >= 0.020*(1.55**player.fastsilly)){
-      player.sillytime -= 0.020*(1.55**player.fastsilly)
+    if (player.sillytime >= 0.020*(1.55**(player.fastsilly-player.femboyupgrades[3]-player.femboyupgrades[6]))){
+      player.sillytime -= 0.020*(1.55**(player.fastsilly-player.femboyupgrades[3]-player.femboyupgrades[6]))
       player.fastsilly += 1
     }
   }
@@ -121,8 +121,8 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)
-    player.cutepower += (player.femboys/tickspersecond)
+    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])
+    player.cutepower += (player.femboys/tickspersecond)*(1+0.2*player.femboyupgrades[2])*(1+0.5*player.femboyupgrades[5])
 
     ticktime -= 1/tickspersecond
   }
