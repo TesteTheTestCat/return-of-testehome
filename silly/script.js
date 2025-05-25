@@ -8,6 +8,7 @@ let player = {
     increasesilly: 0,
     silliest: 0,
     femboys: 0,
+    cutepower: 0,
     lasttick: Date.now()
 }
 let currenttab = 0
@@ -26,6 +27,8 @@ function showtext(){
   //tab one
     gel("femboys").textContent = intformat(player.femboys)
     gel("femboycost").textContent = timeformat(nextfemboy(player.femboys+1))
+    gel("cutepower").textContent = format(player.cutepower)
+    gel("cuteboost").textContent = format(cutepowerboost(player.cutepower))
 }
 function assignonclick(){
     let tabnumbers = ["0","1","-1"]
@@ -41,6 +44,9 @@ function assignonclick(){
     increaseup.onclick = () => {buyitem(2)}
     const sillinessupg = gel("b_thesilliest")
     sillinessupg.onclick = () => {buyitem(3)}
+
+    const prestigeoffemboys = gel("b_femboyprestige")
+    prestigeoffemboys.onclick = () => {femboyprestige()}
 }
 function buyitem(a){
   if (a == 1){
@@ -76,6 +82,20 @@ function tabstuff(tab){
 function nextfemboy(count){
   return 10*(count**2)
 }
+function femboyprestige(){
+  if (player.sillytime >= nextfemboy(player.femboys+1)){
+    player.sillytime = 0
+    player.increasesilly = 0
+    player.fastsilly = 0
+    player.silliest = 0
+    player.cutepower = 0
+    player.femboys += 1
+  }
+}
+function cutepowerboost(x){
+  if (x < 1000000){return 1+Math.log10(x+1)}
+  else {return 2}
+}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
@@ -83,7 +103,8 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))
+    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)
+    player.cutepower += (player.femboys/tickspersecond)
 
     ticktime -= 1/tickspersecond
   }
