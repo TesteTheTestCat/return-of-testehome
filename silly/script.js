@@ -7,6 +7,7 @@ let player = {
     fastsilly: 0,
     increasesilly: 0,
     silliest: 0,
+    femboys: 0,
     lasttick: Date.now()
 }
 let currenttab = 0
@@ -21,7 +22,8 @@ function showtext(){
   gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
   }
   if (currenttab == 1){
-    gel("femboys").textContent = 0
+    gel("femboys").textContent = intformat(player.femboys)
+    gel("femboycost").textContent = timeformat(nextfemboy(player.femboys))
   }
 }
 function assignonclick(){
@@ -70,6 +72,9 @@ function tabstuff(tab){
       gel("tab_"+k).style.display = "none"
     }
 }}
+function nextfemboy(count){
+  return 10*(count**2)
+}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
