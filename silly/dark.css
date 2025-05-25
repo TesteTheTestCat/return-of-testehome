@@ -28,7 +28,7 @@ button {
 }
 #b_femboyprestige {
   width: 100%;
-  background-color: linear-gradient(90deg,
+  background: linear-gradient(90deg,
   #55CDFC
   #F7A8B8
   #FFFFFF
@@ -36,17 +36,17 @@ button {
   #55CDFC
   );
   color: black;
-  border-color: linear-gradient(90deg,
+  border: 3px solid linear-gradient(90deg,
   #55CDFC
   #F7A8B8
   #FFFFFF
   #F7A8B8
   #55CDFC
-  )
+  );
 }
 #b_femboyprestige:hover {
   width: 100%;
-  background-color: linear-gradient(90deg,
+  background: linear-gradient(90deg,
   #3b96ba
   #b27985
   #bababa
@@ -54,13 +54,13 @@ button {
   #3b96ba
   );
   color: black;
-  border-color: linear-gradient(90deg,
+  border: 3px solid linear-gradient(90deg,
   #3b96ba
   #b27985
   #bababa
   #b27985
   #3b96ba
-  )
+  );
 }
 td {
   padding-left: 1em;
