@@ -40,7 +40,7 @@ export function intformat(x){
 }
 export function timeformat(x){
   if (x < 1){
-    return intformat(x*1000)+"ms"
+    return format(x*1000)+"ms"
   }
   if (x < 60){
     return format(x)+"s"
