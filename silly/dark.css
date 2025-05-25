@@ -6,6 +6,14 @@ body {
   color: white;
   text-align: center;
 }
+button {
+  font-family: 'Cascadia Mono', monospace;
+  background-color: #d1d1d1;
+  border-color: #d1d1d1;
+  border: 3px solid #d1d1d1;
+  border-radius: 5px;
+  color: black
+}
 #b_besilly {
   width: 100%;
   background-color: #670797;
