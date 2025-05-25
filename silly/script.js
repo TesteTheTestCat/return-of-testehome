@@ -7,7 +7,7 @@ let player = {
     fastsilly: 0,
     increasesilly: 0,
     silliest: 0,
-    femboys: 0,
+    femboys: 1,
     cutepower: 0,
     // [top (F11~F14), middle (F21~F24), bottom(F31~F32)]
     femboyupgrades: [0,0,0,0, 0,0,0,0, 0,0],
