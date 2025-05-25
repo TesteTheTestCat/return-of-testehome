@@ -21,7 +21,7 @@ function showtext(){
   gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
   }
   if (currenttab == 1){
-    gel("femboys").textContent = intformat(0)
+    gel("femboys").textContent = 0
   }
 }
 function assignonclick(){
