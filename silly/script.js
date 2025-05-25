@@ -33,7 +33,7 @@ function showtext(){
     gel("cuteboost").textContent = format(cutepowerboost(player.cutepower))
     let upgnumbers = ["f11","f12","f13","f14","f21","f22","f23","f24","f31","f32"]
     for (let i in upgnumbers){
-      if (femboyupgrades[i] == 1){gel("bfu_"+upgnumbers[i]).class = "femboyupgradebought"}
+      if (player.femboyupgrades[i] == 1){gel("bfu_"+upgnumbers[i]).class = "femboyupgradebought"}
       else {gel("bfu_"+upgnumbers[i]).class = "femboyupgradeunbought"}
     }
 }
