@@ -9,6 +9,8 @@ let player = {
     silliest: 0,
     femboys: 0,
     cutepower: 0,
+    // [top (F11~F14), middle (F21~F24), bottom(F31~F32)]
+    femboyupgrades: [0,0,0,0, 0,0,0,0, 0,0],
     lasttick: Date.now()
 }
 let currenttab = 0
@@ -29,6 +31,11 @@ function showtext(){
     gel("femboycost").textContent = timeformat(nextfemboy(player.femboys+1))
     gel("cutepower").textContent = format(player.cutepower)
     gel("cuteboost").textContent = format(cutepowerboost(player.cutepower))
+    let upgnumbers = ["f11","f12","f13","f14","f21","f22","f23","f24","f31","f32"]
+    for (let i in upgnumbers){
+      if (femboyupgrades[i] == 1){gel("bfu_"+upgnumbers[i]).class = "femboyupgradebought"}
+      else {gel("bfu_"+upgnumbers[i]).class = "femboyupgradeunbought"}
+    }
 }
 function assignonclick(){
     let tabnumbers = ["0","1","-1"]
@@ -47,6 +54,10 @@ function assignonclick(){
 
     const prestigeoffemboys = gel("b_femboyprestige")
     prestigeoffemboys.onclick = () => {femboyprestige()}
+    let upgnumbers = ["f11","f12","f13","f14","f21","f22","f23","f24","f31","f32"]
+    for (let i in upgnumbers){
+      gel("bfu_"+upgnumbers[i]).onclick = () => {buyupgrade(i)}
+    }
 }
 function buyitem(a){
   if (a == 1){
@@ -66,6 +77,13 @@ function buyitem(a){
       player.sillytime -= 5400
       player.silliest = 1
     }
+  }
+}
+function buyupgrade(a){
+  costs = [100,100,250,375, 1000,1250,1500,2500, 5000,10000]
+  if (player.cutepower >= costs[a] && player.femboyupgrades[a] != 1){
+    player.femboyupgrades[a] = 1
+    player.cutepower -= costs[a]
   }
 }
 function tabstuff(tab){
