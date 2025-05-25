@@ -4,6 +4,7 @@ const tickspersecond = 30
 const gel = (name) => document.getElementById(name)
 let player = {
     sillytime: 0,
+    clickssincelastreset: 0,
     fastsilly: 0,
     increasesilly: 0,
     silliest: 0,
@@ -17,7 +18,7 @@ let currenttab = 0
 function showtext(){
   //always here
   gel("sillytime").textContent = timeformat(player.sillytime)
-  gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0]))
+  gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])*(1+(0.05*player.increasesilly)*player.femboyupgrades[4])*(clickpowerboost(player.clickssincelastreset)))
 
   // tab zero
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**(player.fastsilly-player.femboyupgrades[3]-player.femboyupgrades[6])))
@@ -43,7 +44,7 @@ function assignonclick(){
       gel("tb_"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
     }
     const besilly = gel("b_besilly")
-    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025*(1+1*player.femboyupgrades[1]))}
+    besilly.onclick = () => {player.sillytime += (1+player.silliest)*((player.increasesilly+4)*0.00025*(1+1*player.femboyupgrades[1])); player.clickssincelastreset+=1}
 
     const speedup = gel("b_fastsilly")
     speedup.onclick = () => {buyitem(1)}
@@ -114,6 +115,9 @@ function cutepowerboost(x){
   if (x < 1000000){return 1+(Math.log10(x+1)/3)}
   else {return 3}
 }
+function clickpowerboost(x){
+  return 1+(((Math.log2(x+1))/3.7)*player.femboyupgrades[7])
+}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
@@ -121,7 +125,7 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   while(ticktime > 1/tickspersecond){
-    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])
+    player.sillytime += (1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])*(1+(0.05*player.increasesilly)*player.femboyupgrades[4])*(clickpowerboost(player.clickssincelastreset))
     player.cutepower += (player.femboys/tickspersecond)*(1+0.2*player.femboyupgrades[2])*(1+0.5*player.femboyupgrades[5])
 
     ticktime -= 1/tickspersecond
