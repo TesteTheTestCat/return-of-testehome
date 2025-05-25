@@ -80,7 +80,7 @@ function tabstuff(tab){
     }
 }}
 function nextfemboy(count){
-  return 10*(count**2)
+  return 2.5*(count**2)
 }
 function femboyprestige(){
   if (player.sillytime >= nextfemboy(player.femboys+1)){
