@@ -50,6 +50,28 @@ button {
   color: black;
   border-color:white
 }
+.femboyupgradeunbought{
+  width: 100%;
+  border-color: #ff0080;
+  background-color: #000000;
+  color: white
+}
+.femboyupgradeunbought:hover{
+  width: 100%;
+  border-color: #ff0080;
+  background-color: #ff0080;
+  color: black
+}
+.femboyupgradebought{
+  width: 100%;
+  border-color: #bb00ff;
+  background-color: #bb00ff;
+  color: black
+}
+.femboyup{
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
 td {
   padding-left: 1em;
   padding-right: 1em;

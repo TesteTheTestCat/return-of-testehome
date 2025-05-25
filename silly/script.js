@@ -15,7 +15,7 @@ let currenttab = 0
 function showtext(){
   //always here
   gel("sillytime").textContent = timeformat(player.sillytime)
-  gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower))
+  gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001)*(player.fastsilly+1))*cutepowerboost(player.cutepower))
 
   // tab zero
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
