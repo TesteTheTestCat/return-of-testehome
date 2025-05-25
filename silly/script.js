@@ -12,19 +12,20 @@ let player = {
 }
 let currenttab = 0
 function showtext(){
+  //always here
   gel("sillytime").textContent = timeformat(player.sillytime)
   gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
-  if (currenttab == 0){
+
+  // tab zero
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
   gel("b_increasesilly").textContent = timeformat(0.15*(1.35**player.increasesilly))
   if (player.silliest != 1){gel("b_thesilliest").textContent = timeformat(5400)}
   else {gel("b_thesilliest").textContent = "MAX"}
   gel("sillyclick").textContent = timeformat((1+player.silliest)*((player.increasesilly+4)*0.00025))
-  }
-  if (currenttab == 1){
+
+  //tab one
     gel("femboys").textContent = intformat(player.femboys)
     gel("femboycost").textContent = timeformat(nextfemboy(player.femboys))
-  }
 }
 function assignonclick(){
     let tabnumbers = ["0","1","-1"]
