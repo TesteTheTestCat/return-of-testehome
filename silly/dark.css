@@ -28,41 +28,27 @@ button {
 }
 #b_femboyprestige {
   width: 100%;
-  background-color: background;
-  background: linear-gradient(
-  #55CDFC
-  #F7A8B8
-  #FFFFFF
-  #F7A8B8
-  #55CDFC
+  background: linear-gradient(102deg,
+  #55CDFC 20%,
+  #F7A8B8 20% 40%,
+  #FFFFFF 40% 60%,
+  #F7A8B8 60% 80%,
+  #55CDFC 80% 100%
   );
   color: black;
-  border: 3px solid linear-gradient(
-  #55CDFC
-  #F7A8B8
-  #FFFFFF
-  #F7A8B8
-  #55CDFC
-  );
+  border-color: white
 }
 #b_femboyprestige:hover {
   width: 100%;
-  background-color: background;
-  background: linear-gradient(
-  #3b96ba
-  #b27985
-  #bababa
-  #b27985
-  #3b96ba
+  background: linear-gradient(102deg,
+  #3b96ba 20%,
+  #b27985 20% 40%,
+  #bababa 40% 60%,
+  #b27985 60% 80%,
+  #3b96ba 80% 100%
   );
   color: black;
-  border: 3px solid linear-gradient(
-  #3b96ba
-  #b27985
-  #bababa
-  #b27985
-  #3b96ba
-  );
+  border-color:white
 }
 td {
   padding-left: 1em;
