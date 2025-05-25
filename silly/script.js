@@ -15,7 +15,7 @@ let currenttab = 0
 function showtext(){
   //always here
   gel("sillytime").textContent = timeformat(player.sillytime)
-  gel("sillygain").textContent = timeformat((1+player.silliest)*(0.001*(player.fastsilly+1)))
+  gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001/tickspersecond)*(player.fastsilly+1))*cutepowerboost(player.cutepower))
 
   // tab zero
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**player.fastsilly))
@@ -93,8 +93,8 @@ function femboyprestige(){
   }
 }
 function cutepowerboost(x){
-  if (x < 1000000){return 1+Math.log10(x+1)}
-  else {return 2}
+  if (x < 1000000){return 1+(Math.log10(x+1)/3)}
+  else {return 3}
 }
 tabstuff(0)
 assignonclick()
