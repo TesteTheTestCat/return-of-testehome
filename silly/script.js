@@ -80,7 +80,7 @@ function buyitem(a){
   }
 }
 function buyupgrade(a){
-  costs = [100,100,250,375, 1000,1250,1500,2500, 5000,10000]
+  let costs = [100,100,250,375, 1000,1250,1500,2500, 5000,10000]
   if (player.cutepower >= costs[a] && player.femboyupgrades[a] != 1){
     player.femboyupgrades[a] = 1
     player.cutepower -= costs[a]
