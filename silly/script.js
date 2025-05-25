@@ -25,7 +25,7 @@ function showtext(){
 
   //tab one
     gel("femboys").textContent = intformat(player.femboys)
-    gel("femboycost").textContent = timeformat(nextfemboy(player.femboys))
+    gel("femboycost").textContent = timeformat(nextfemboy(player.femboys+1))
 }
 function assignonclick(){
     let tabnumbers = ["0","1","-1"]
