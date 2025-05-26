@@ -10,7 +10,7 @@ let player = {
     increasesilly: 0,
     silliest: 0,
     femboys: 0,
-    cutepower: 10000,
+    cutepower: 0,
     // [top (F11~F14), middle (F21~F24), bottom(F31~F32)]
     femboyupgrades: [0,0,0,0, 0,0,0,0, 0,0],
     lasttick: Date.now()
