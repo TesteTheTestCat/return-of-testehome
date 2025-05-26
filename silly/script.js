@@ -46,7 +46,7 @@ function showtext(){
     }
 }
 function assignonclick(){
-    let tabnumbers = ["0","1","-1"]
+    let tabnumbers = ["0","1","-1","2"]
     for (let i in tabnumbers){
       gel("tb_"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
     }
@@ -95,7 +95,7 @@ function buyupgrade(a){
   }
 }
 function tabstuff(tab){
-  let tabnumbers = [0,1,-1]
+  let tabnumbers = [0,1,-1,2]
   for (let i in tabnumbers){
     let k = tabnumbers[i]
     if (k == tab){
