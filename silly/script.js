@@ -10,7 +10,7 @@ let player = {
     increasesilly: 0,
     silliest: 0,
     femboys: 0,
-    cutepower: 0,
+    cutepower: 10000,
     // [top (F11~F14), middle (F21~F24), bottom(F31~F32)]
     femboyupgrades: [0,0,0,0, 0,0,0,0, 0,0],
     lasttick: Date.now()
@@ -20,6 +20,12 @@ function showtext(){
   //always here
   gel("sillytime").textContent = timeformat(player.sillytime)
   gel("sillygain").textContent = timeformat((1+player.silliest)*((0.001)*(player.fastsilly+1))*cutepowerboost(player.cutepower)*(1+0.5*player.femboyupgrades[0])*(1+(0.05*player.increasesilly)*player.femboyupgrades[4])*(clickpowerboost(player.clickssincelastreset)))
+  if(player.femboyupgrades[8] == 1){
+    gel("tb_2").style.display = "inline"
+  }
+  else {
+    gel("tb_2").style.display = "none"
+  }
 
   // tab zero
   gel("b_fastsilly").textContent = timeformat(0.020*(1.55**(player.fastsilly-player.femboyupgrades[3]-player.femboyupgrades[6])))
