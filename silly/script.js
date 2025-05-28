@@ -66,6 +66,9 @@ function assignonclick(){
     for (let i in upgnumbers){
       gel("bfu_"+upgnumbers[i]).onclick = () => {buyupgrade(i)}
     }
+
+    const hardresetbutton = gel("b_hardreset")
+    hardresetbutton.onclick = () => {hardreset()}
 }
 function buyitem(a){
   if (a == 1){
@@ -133,9 +136,25 @@ function timespend(time){
     return 1/tickspersecond
   }
 }
+function save(){
+  localStorage.setItem("silly-save",btoa(JSON.stringify(player)))
+}
+function load(){
+  if (localStorage.getItem("silly-save") != null) {
+  var data = JSON.parse(atob(localStorage.getItem("silly-save")))
+  for (const i in data) player[i] = data[i];}
+}
+function hardreset(){
+  if (confirm("you sure?") && confirm("are you really sure") && confirm("are you really really sure?")){
+    localStorage.removeItem("silly-save")
+    location.reload() 
+  }
+}
 tabstuff(0)
 assignonclick()
 let ticktime = 0
+load()
+setInterval(() => {save(),60*1000})
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
