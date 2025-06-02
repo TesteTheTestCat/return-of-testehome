@@ -13,6 +13,7 @@ let player = {
     cutepower: 0,
     // [top (F11~F14), middle (F21~F24), bottom(F31~F32)]
     femboyupgrades: [0,0,0,0, 0,0,0,0, 0,0],
+    kilowatthours: 0,
     lasttick: Date.now()
 }
 let currenttab = 0
@@ -84,7 +85,7 @@ function buyitem(a){
     }
   }
   if (a == 3){
-    if ((player.silliest >= 5400) && (player.silliest != 1)){
+    if ((player.sillytime >= 5400) && (player.silliest != 1)){
       player.sillytime -= 5400
       player.silliest = 1
     }
