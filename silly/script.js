@@ -146,10 +146,8 @@ function load(){
   for (const i in data) player[i] = data[i];}
 }
 function hardreset(){
-  if (confirm("you sure?") && confirm("are you really sure") && confirm("are you really really sure?")){
+  if (confirm("you sure?")){
     localStorage.removeItem("silly-save")
-    load()
-    save()
     location.reload() 
   }
 }
