@@ -148,6 +148,8 @@ function load(){
 function hardreset(){
   if (confirm("you sure?") && confirm("are you really sure") && confirm("are you really really sure?")){
     localStorage.removeItem("silly-save")
+    load()
+    save()
     location.reload() 
   }
 }
