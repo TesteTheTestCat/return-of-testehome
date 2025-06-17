@@ -58,7 +58,7 @@ export function timeformat(x){
     return intformat(x/604800)+"w"+format((x/86400)%7)+"d"
   }
   if (x < 31556917.44){
-    return intformat(x/2629743.12)+"mo"+format((x/604800)%30.4368416667)+"w"
+    return intformat(x/2629743.12)+"mo"+format((x/604800)%4.3481202381)+"w"
   }
   return intformat(x/31556917.44)+"y"+format((x/2629743.12)%12)+"mo"
 }
