@@ -1,4 +1,5 @@
-player = {
+let ticktime = 0
+let player = {
     lasttick: 0,
     levels: [0],
     xp: [0],
