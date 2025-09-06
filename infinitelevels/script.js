@@ -1,6 +1,7 @@
+import { format, intformat } from "./format.js";
 let ticktime = 0
 let player = {
-    lasttick: 0,
+    lasttick: Date.now(),
     levels: [0],
     xp: [0],
 }
@@ -20,7 +21,7 @@ setInterval(() => {
     player.xp[0] -= levelRequire(player.levels[0],0)
     player.levels[0] += 1
   }
-  gel("leveltime").innerHTML = `Level ${player.levels[0]}, ${player.xp[0]}/${levelRequire(player.levels[0],0)}
+  gel("leveltime").innerHTML = `Level ${intformat(player.levels[0])}, ${format(player.xp[0])}/${format(levelRequire(player.levels[0],0))}
   <progress max="${levelRequire(player.levels[0],0)}" value="${player.xp[0]}"><br>`
   ticktime = 0
 },1000/60)
