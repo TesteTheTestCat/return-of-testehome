@@ -16,12 +16,12 @@ const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
-  player.xp[0] += ticktime
+  player.xp[0] += ticktime*10
   if (player.xp[0] > levelRequire(player.levels[0],0)){
     player.xp[0] -= levelRequire(player.levels[0],0)
     player.levels[0] += 1
   }
   gel("leveltime").innerHTML = `Level ${intformat(player.levels[0])}, ${format(player.xp[0])}/${format(levelRequire(player.levels[0],0))}
-  <br>0% boost from higher tiers (${1} XP/s)<br><progress max="${levelRequire(player.levels[0],0)}" value="${player.xp[0]}"><br>`
+  <br>0% boost from higher tiers (${10} XP/s)<br><progress max="${levelRequire(player.levels[0],0)}" value="${player.xp[0]}"><br>`
   ticktime = 0
 },1000/60)
