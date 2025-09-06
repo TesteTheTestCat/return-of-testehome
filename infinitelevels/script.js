@@ -4,5 +4,5 @@ player = {
 }
 const gel = (name) => document.getElementById(name)
 setInterval(() => {
-  gel("leveltime").textContent = "mrrreeeow <br> nyaaaaa"
+  gel("leveltime").textContent = "mrrreeeow \n nyaaaaa"
 },1000/60)
