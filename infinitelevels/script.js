@@ -28,10 +28,15 @@ function highRanks(lv,t){
   }
   return k
 }
+function levelMult(lv){
+  k = Math.floor(Math.log10(lv))
+  if (k < 0){k = 0}
+  return 2**k
+}
 function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
   for (let i = 0; i < lv.length; i++){
-  j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, ${format(xp[i])}/${format(levelRequire(lv[i],i))}
+  j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
   <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
@@ -40,7 +45,7 @@ const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
-  player.xp[0] += ticktime*10*highRanks(player.levels,0)
+  player.xp[0] += ticktime*10*highRanks(player.levels,0)*levelMult(player.levels[0])
   for (let i = 0; i < player.levels.length; i++){
     if (player.xp[i] >= levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
@@ -49,7 +54,7 @@ setInterval(() => {
         player.xp[i+1] = 0
         player.levels[i+1] = 0
       }
-      player.xp[i+1] += 10*highRanks(player.levels,i+1)
+      player.xp[i+1] += 10*highRanks(player.levels,i+1)*levelMult(player.levels[i+1])
     }
   }
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
