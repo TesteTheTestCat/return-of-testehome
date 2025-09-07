@@ -64,8 +64,8 @@ setInterval(() => {
       if (player.levels[0] >= 50){player.metaxp+=2**i}
     }
   }
-  if (player.metaxp >= levelRequire(metalevel,5,0)){
-    player.metaxp -= levelRequire(metalevel,5,0)
+  if (player.metaxp >= levelRequire(player.metalevel,5,0)){
+    player.metaxp -= levelRequire(player.metalevel,5,0)
     player.metalevel += 1
   }
   if (player.levels[0] >= 50){gel("metalevel").innerHTML = makeInnerHTMLForMetalevel(player.metalevel,player.metaxp)}
