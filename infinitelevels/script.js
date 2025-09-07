@@ -45,7 +45,7 @@ function makeInnerHTMLForLevelTime(lv,xp){
   return j
 }
 function makeInnerHTMLForMetalevel(mlv,mxp){
-  return `Meta-Level ${intformat(mlv)}, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
+  return `<div style="animation-name: rainbow; animation-duration:2s; animation-iteration-count:infinite;">Meta-Level ${intformat(mlv)}</div>, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
   <br>/${format(1+(0.01*mlv))} cost decrease from metalevel<br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
 const gel = (name) => document.getElementById(name)
