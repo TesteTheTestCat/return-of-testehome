@@ -8,7 +8,7 @@ body {
 }
 progress {
   border-radius: 7px; 
-  width: 40%;
+  width: 75%;
   height: 16px;
   appearance: none;
   -webkit-appearance: none;
