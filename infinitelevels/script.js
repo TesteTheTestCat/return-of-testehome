@@ -15,7 +15,7 @@ function levelRequire(lv,t){
 function makeInnerHTMLForLevelTime(){
   let j = ""
   let k = ""
-  for (let i = 0; i <= player.levels.length; i++){
+  for (let i = 0; i < player.levels.length; i++){
     k = `Level ${intformat(player.levels[i])}, ${format(player.xp[i])}/${format(levelRequire(player.levels[i],i))}
   <br>0% boost from higher tiers<br><progress max="${levelRequire(player.levels[i],i)}" value="${player.xp[i]}"><br>`
   console.log(k)
@@ -28,7 +28,7 @@ setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
   player.xp[0] += ticktime*10
-  for (let i = 0; i <= player.levels.length; i++){
+  for (let i = 0; i < player.levels.length; i++){
     if (player.xp[i] > levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
       player.levels[i] += 1
