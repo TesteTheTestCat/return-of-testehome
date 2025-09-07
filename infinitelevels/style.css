@@ -34,3 +34,9 @@ progress::-webkit-progress-value {
   90% {color: hsl(324,100,50)}
   100% {color: hsl(360,100,50)}
 }
+.rainbowtext {
+  animation-name: rainbow;
+  animation-duration:2s;
+  animation-iteration-count:infinite;
+  display: inline-block;
+}
