@@ -7,6 +7,7 @@ let player = {
     metalevel: 0,
     metaxp: 0
 }
+const gel = (name) => document.getElementById(name)
 function levelRequire(lv,t,m=1){
   let lvp = lv
   let p = 100-(10*t)
@@ -83,7 +84,6 @@ function hardreset(){
 load()
 tabstuff(1)
 assignonclick()
-const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
