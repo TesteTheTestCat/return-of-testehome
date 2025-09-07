@@ -15,10 +15,10 @@ progress::-webkit-progress-bar {
   background-color: #333333;
   border-radius: 3px;
 }
-progress::-webkit-progress-value {
+/* progress::-webkit-progress-value {
   background-color: #ffffff;
   border-radius: 3px;
-}
+} */
 progress::-webkit-progress-value[data-color="red"] {
   background-color: #ff0000;
   border-radius: 3px;
