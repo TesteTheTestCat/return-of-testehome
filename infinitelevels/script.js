@@ -61,7 +61,7 @@ setInterval(() => {
         player.levels[i+1] = 0
       }
       player.xp[i+1] += 10*highRanks(player.levels,i+1)*levelMult(player.levels[i+1])
-      if (player.levels[0] >= 50){metaxp+=2**i}
+      if (player.levels[0] >= 50){player.metaxp+=2**i}
     }
   }
   if (player.metaxp >= levelRequire(metalevel,5,0)){
