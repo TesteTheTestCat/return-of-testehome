@@ -33,6 +33,6 @@ setInterval(() => {
       player.xp[i+1] += 10
     }
   }
-  gel("leveltime").innerHTML = makeInnerHTMLForLevelTime
+  gel("leveltime").innerHTML = makeInnerHTMLForLevelTime()
   ticktime = 0
 },1000/60)
