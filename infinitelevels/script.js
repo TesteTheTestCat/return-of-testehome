@@ -36,9 +36,10 @@ function levelMult(lv){
   return 2**k
 }
 function makeInnerHTMLForLevelTime(lv,xp){
+  let colors = ["#ff0000","#ff8800","#ffff00","#88ff00","#00ff00","#00ff88","#00ffff","#0088ff","#0000ff","#8800ff","#ff00ff","#ff0088"]
   let j = ""
   for (let i = 0; i < lv.length; i++){
-  j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
+  j += `<div style="color=${colors[i]}">${capitalize(makeTierName(i))} ${intformat(lv[i])}</div>, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
   <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
