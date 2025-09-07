@@ -5,7 +5,8 @@ let player = {
     levels: [0,0],
     xp: [0,0],
     metalevel: 0,
-    metaxp: 0
+    metaxp: 0,
+    paws: 0
 }
 const gel = (name) => document.getElementById(name)
 function levelRequire(lv,t,m=1){
@@ -50,7 +51,7 @@ function makeInnerHTMLForMetalevel(mlv,mxp){
   <br>/${format(1+(0.01*mlv))} cost decrease from <span class="rainbowtext">metalevel</span><br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
 function tabstuff(tab){
-  let tabnumbers = [0,1]
+  let tabnumbers = [0,1,2]
   for (let i in tabnumbers){
     let k = tabnumbers[i]
     if (k == tab){
@@ -61,11 +62,22 @@ function tabstuff(tab){
     }
 }}
 function assignonclick(){
-  let tabnumbers = ["0","1"]
+  let tabnumbers = ["0","1","2"]
   for (let i in tabnumbers){
     gel("tabbutton"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
   }
   gel("hardresetbutton").onclick = () => {hardreset()}
+}
+function pawsprestige(){
+  let pawscost = [3]
+  if (player.paws < pawscost.length){
+  if (player.levels[pawscost[player.paws]] >= 1){
+    player.levels = [0,0]
+    player.xp = [0,0]
+    player.metalevel = 0
+    player.metaxp = 0
+    player.paws += 1
+  }}
 }
 function save(){
   localStorage.setItem("infinite-savefiles",btoa(JSON.stringify(player)))
