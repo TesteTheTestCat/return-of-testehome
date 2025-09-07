@@ -12,7 +12,7 @@ function levelRequire(lv,t,m=1){
   let p = 100-(10*t)
   if (p < 80){p = 80}
   if (lv > 1000){lvp *= 1+(0.01*(lv-1000))}
-  return (p*(1+(0.05*lvp)))/(1+(0.01*m*metalevel))
+  return (p*(1+(0.05*lvp)))/(1+(0.01*m*player.metalevel))
 }
 function makeTierName(t){
   let names = ["level","rank","magic","fluff","job","power","warmth","module","file","folder","system"]
@@ -64,9 +64,9 @@ setInterval(() => {
       if (player.levels[0] >= 50){metaxp+=2**i}
     }
   }
-  if (metaxp >= levelRequire(metalevel,5,0)){
-    metaxp -= levelRequire(metalevel,5,0)
-    metalevel += 1
+  if (player.metaxp >= levelRequire(metalevel,5,0)){
+    player.metaxp -= levelRequire(metalevel,5,0)
+    player.metalevel += 1
   }
   if (player.levels[0] >= 50){gel("metalevel").innerHTML = makeInnerHTMLForMetalevel(player.metalevel,player.metaxp)}
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
