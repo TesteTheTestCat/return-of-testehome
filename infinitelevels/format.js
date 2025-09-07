@@ -9,7 +9,7 @@ export function format(x,l=true){
   }
   // 1e-6 to 1
   else if (x < 1){
-    return "1/"+(x**-1).toFixed(2)
+    return x.toFixed(5)
   }
   // 0.1 to 1000
   else if(x < 1000){
