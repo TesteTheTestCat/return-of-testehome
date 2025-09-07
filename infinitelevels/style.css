@@ -6,3 +6,55 @@ body {
   color: white;
   text-align: center;
 }
+progress::-webkit-progress-bar {
+  background-color: #333333;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="red"] {
+  background-color: #ff0000;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="orange"] {
+  background-color: #ff8800;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="yellow"] {
+  background-color: #ffff00;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="lightgreen"] {
+  background-color: #88ff00;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="green"] {
+  background-color: #00ff00;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="bluegreen"] {
+  background-color: #00ff88;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="cyan"] {
+  background-color: #00ffff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="blue"] {
+  background-color: #0088ff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="darkblue"] {
+  background-color: #0000ff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="purple"] {
+  background-color: #8800ff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="magenta"] {
+  background-color: #ff00ff;
+  border-radius: 3px;
+}
+progress::-webkit-progress-value[data-color="redmagenta"] {
+  background-color: #ff0088;
+  border-radius: 3px;
+}

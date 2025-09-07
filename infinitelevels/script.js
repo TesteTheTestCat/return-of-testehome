@@ -39,13 +39,13 @@ function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
   for (let i = 0; i < lv.length; i++){
   j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
-  <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
+  <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress data-color="lightgreen" max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
 }
 function makeInnerHTMLForMetalevel(mlv,mxp){
   return `Meta-Level ${intformat(mlv)}, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
-  <br>/${format(1+(0.01*mlv))} cost decrease from metalevel<br><progress max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
+  <br>/${format(1+(0.01*mlv))} cost decrease from metalevel<br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
 const gel = (name) => document.getElementById(name)
 setInterval(() => {
