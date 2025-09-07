@@ -40,13 +40,13 @@ function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
   for (let i = 0; i < lv.length; i++){
   j += `<div style="color: ${colors[i]}; display: inline-block;">${capitalize(makeTierName(i))} ${intformat(lv[i])}</div>, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
-  <br>*${format(highRanks(lv,i))} boost from <div class="rainbowtext">higher tiers</div><br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
+  <br>*${format(highRanks(lv,i))} boost from <span class="rainbowtext">higher tiers</span><br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
 }
 function makeInnerHTMLForMetalevel(mlv,mxp){
   return `<div class="rainbowtext">Meta-Level ${intformat(mlv)}</div>, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
-  <br>/${format(1+(0.01*mlv))} cost decrease from <div class="rainbowtext">metalevel</div><br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
+  <br>/${format(1+(0.01*mlv))} cost decrease from <span class="rainbowtext">metalevel</span><br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
 const gel = (name) => document.getElementById(name)
 setInterval(() => {
