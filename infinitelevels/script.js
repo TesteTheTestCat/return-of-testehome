@@ -12,11 +12,27 @@ function levelRequire(lv,t){
   if (lv > 1000){lvp *= 1+(0.01*(lv-1000))}
   return (p*(1+(0.05*lvp)))
 }
+function makeTierName(t){
+  let names = ["level","rank","magic","fluff","job","power","warmth","module","file","folder","system"]
+  let mreow = Math.floor(t/(names.length))
+  if (mreow == 0){return `${names[t%(names.length)]}`}
+  else {return `${names[t%(names.length)]}<sup>${mreow+1}</sup>`}
+}
+function capitalize(st){
+  return st.charAt(0).toUpperCase() + st.slice(1);
+}
+function highRanks(lv,t){
+  let k = 1
+  for (let i = t; i < lv.length; i++){
+    k += 0.1*(i-t)*lv[i]
+  }
+  return k
+}
 function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
   for (let i = 0; i < lv.length; i++){
-  j += `Level ${intformat(lv[i])}, ${format(xp[i])}/${format(levelRequire(lv[i],i))}
-  <br>0% boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
+  j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, ${format(xp[i])}/${format(levelRequire(lv[i],i))}
+  <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
 }
@@ -24,7 +40,7 @@ const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
   player.lasttick = Date.now()
-  player.xp[0] += ticktime*10
+  player.xp[0] += ticktime*10*highRanks(player.levels,0)
   for (let i = 0; i < player.levels.length; i++){
     if (player.xp[i] >= levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
@@ -33,7 +49,7 @@ setInterval(() => {
         player.xp[i+1] = 0
         player.levels[i+1] = 0
       }
-      player.xp[i+1] += 10
+      player.xp[i+1] += 10*highRanks(player.levels,i+1)
     }
   }
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
