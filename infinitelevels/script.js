@@ -40,7 +40,7 @@ function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
   for (let i = 0; i < lv.length; i++){
   j += `${capitalize(makeTierName(i))} ${intformat(lv[i])}, [*${levelMult(lv[i])}] ${format(xp[i])}/${format(levelRequire(lv[i],i))}
-  <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress data-color="${colors[i%12]}" max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
+  <br>*${format(highRanks(lv,i))} boost from higher tiers<br><progress color="${colors[i%12]}" max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
   return j
 }
