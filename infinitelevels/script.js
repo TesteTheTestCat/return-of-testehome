@@ -48,6 +48,21 @@ function makeInnerHTMLForMetalevel(mlv,mxp){
   return `<div class="rainbowtext">Meta-Level ${intformat(mlv)}</div>, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
   <br>/${format(1+(0.01*mlv))} cost decrease from <span class="rainbowtext">metalevel</span><br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
+function save(){
+  localStorage.setItem("infinite-savefiles",btoa(JSON.stringify(player)))
+}
+function load(){
+  if (localStorage.getItem("infinite-savefiles") != null) {
+  var data = JSON.parse(atob(localStorage.getItem("infinite-savefiles")))
+  for (const i in data) player[i] = data[i];}
+}
+function hardreset(){
+  if (confirm("you sure?")){
+    localStorage.removeItem("infinite-savefiles")
+    location.reload() 
+  }
+}
+load()
 const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
@@ -73,3 +88,6 @@ setInterval(() => {
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
   ticktime = 0
 },1000/60)
+setInterval(() => {
+  save()
+},1000*60)
