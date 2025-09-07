@@ -29,7 +29,7 @@ function highRanks(lv,t){
   return k
 }
 function levelMult(lv){
-  k = Math.floor(Math.log10(lv))
+  let k = Math.floor(Math.log10(lv))
   if (k < 0){k = 0}
   return 2**k
 }
