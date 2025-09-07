@@ -18,7 +18,6 @@ function makeInnerHTMLForLevelTime(lv,xp){
   j += `Level ${intformat(lv[i])}, ${format(xp[i])}/${format(levelRequire(lv[i],i))}
   <br>0% boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"></progress><br>`
   }
-  console.log(j)
   return j
 }
 const gel = (name) => document.getElementById(name)
@@ -27,16 +26,16 @@ setInterval(() => {
   player.lasttick = Date.now()
   player.xp[0] += ticktime*10
   for (let i = 0; i < player.levels.length; i++){
-    if (player.xp[i] > levelRequire(player.levels[i],i)){
+    if (player.xp[i] >= levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
       player.levels[i] += 1
       if (player.xp[i+1] == null){
         player.xp[i+1] = 0
+        player.levels[i+1] = 0
       }
       player.xp[i+1] += 10
     }
   }
-  console.log()
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
   ticktime = 0
 },1000/60)
