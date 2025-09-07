@@ -12,11 +12,11 @@ function levelRequire(lv,t){
   if (lv > 1000){lvp *= 1+(0.01*(lv-1000))}
   return (p*(1+(0.05*lvp)))
 }
-function makeInnerHTMLForLevelTime(){
+function makeInnerHTMLForLevelTime(lv,xp){
   let j = ""
-  for (let i = 0; i < player.levels.length; i++){
-  j += `Level ${intformat(player.levels[i])}, ${format(player.xp[i])}/${format(levelRequire(player.levels[i],i))}
-  <br>0% boost from higher tiers<br><progress max="${levelRequire(player.levels[i],i)}" value="${player.xp[i]}"><br>`
+  for (let i = 0; i < lv.length; i++){
+  j += `Level ${intformat(lv[i])}, ${format(xp[i])}/${format(levelRequire(lv[i],i))}
+  <br>0% boost from higher tiers<br><progress max="${levelRequire(lv[i],i)}" value="${xp[i]}"><br>`
   }
   console.log(j)
   return j
@@ -36,6 +36,7 @@ setInterval(() => {
       player.xp[i+1] += 10
     }
   }
-  gel("leveltime").innerHTML = makeInnerHTMLForLevelTime()
+  console.log()
+  gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
   ticktime = 0
 },1000/60)
