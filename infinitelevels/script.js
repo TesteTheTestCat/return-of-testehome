@@ -4,13 +4,15 @@ let player = {
     lasttick: Date.now(),
     levels: [0,0],
     xp: [0,0],
+    metalevel: 0,
+    metaxp: 0
 }
-function levelRequire(lv,t){
+function levelRequire(lv,t,m=1){
   let lvp = lv
   let p = 100-(10*t)
   if (p < 80){p = 80}
   if (lv > 1000){lvp *= 1+(0.01*(lv-1000))}
-  return (p*(1+(0.05*lvp)))
+  return (p*(1+(0.05*lvp)))/(1+(0.01*m*metalevel))
 }
 function makeTierName(t){
   let names = ["level","rank","magic","fluff","job","power","warmth","module","file","folder","system"]
@@ -41,6 +43,10 @@ function makeInnerHTMLForLevelTime(lv,xp){
   }
   return j
 }
+function makeInnerHTMLForMetalevel(mlv,mxp){
+  return `Meta-Level ${intformat(mlv)}, ${format(mxp)}/${format(levelRequire(mlv,5,0))}
+  <br>/${format(1+(0.01*mlv))} cost decrease from metalevel<br><progress max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
+}
 const gel = (name) => document.getElementById(name)
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
@@ -55,8 +61,14 @@ setInterval(() => {
         player.levels[i+1] = 0
       }
       player.xp[i+1] += 10*highRanks(player.levels,i+1)*levelMult(player.levels[i+1])
+      if (player.levels[0] >= 50){metaxp+=2**i}
     }
   }
+  if (metaxp >= levelRequire(metalevel,5,0)){
+    metaxp -= levelRequire(metalevel,5,0)
+    metalevel += 1
+  }
+  if (player.levels[0] >= 50){gel("metalevel").innerHTML = makeInnerHTMLForMetalevel(player.metalevel,player.metaxp)}
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
   ticktime = 0
 },1000/60)
