@@ -108,9 +108,9 @@ tabstuff(1)
 assignonclick()
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
-  player.powertime -= ticktime
   player.lasttick = Date.now()
   player.xp[0] += ticktime*10*highRanks(player.levels,0)*levelMult(player.levels[0])*(player.powertime>0 ? 2 :1 )
+  player.powertime -= ticktime
   for (let i = 0; i < player.levels.length; i++){
     if (player.xp[i] >= levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
