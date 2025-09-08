@@ -61,13 +61,6 @@ function tabstuff(tab){
       gel("tab"+k).style.display = "none"
     }
 }}
-function assignonclick(){
-  let tabnumbers = ["0","1","2"]
-  for (let i in tabnumbers){
-    gel("tabbutton"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
-  }
-  gel("hardresetbutton").onclick = () => {hardreset()}
-}
 function pawsprestige(){
   let pawscost = [3]
   if (player.paws < pawscost.length){
@@ -92,6 +85,13 @@ function hardreset(){
     localStorage.removeItem("infinite-savefiles")
     location.reload() 
   }
+}
+function assignonclick(){
+  let tabnumbers = ["0","1","2"]
+  for (let i in tabnumbers){
+    gel("tabbutton"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
+  }
+  gel("hardresetbutton").onclick = () => {hardreset()}
 }
 load()
 tabstuff(1)

@@ -6,6 +6,14 @@ body {
   color: white;
   text-align: center;
 }
+button {
+  font-family: 'Cascadia Mono', monospace;
+  background-color: #d1d1d1;
+  border-color: #d1d1d1;
+  border: 3px solid #d1d1d1;
+  border-radius: 5px;
+  color: black
+}
 progress {
   border-radius: 7px; 
   width: 75%;
@@ -37,4 +45,12 @@ progress::-webkit-progress-value {
 .rainbowtext {
   animation: rainbow 2s linear 0s infinite normal;
   display: inline-block;
+}
+#pawprestigebutton{
+  width: 100%;
+  font-size: 2em;
+  animation: rainbow 2s linear 0s infinite normal;
+  background-color: #a0a0a0;
+  border-color: #a0a0a0;
+  border: 3px solid #a0a0a0;
 }
