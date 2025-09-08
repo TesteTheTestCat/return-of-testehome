@@ -6,7 +6,8 @@ let player = {
     xp: [0,0],
     metalevel: 0,
     metaxp: 0,
-    paws: 0
+    paws: 0,
+    powertime: 0
 }
 const gel = (name) => document.getElementById(name)
 function levelRequire(lv,t,m=1){
@@ -51,7 +52,7 @@ function makeInnerHTMLForMetalevel(mlv,mxp){
   <br>/${format(1+(0.01*mlv))} cost decrease from <span class="rainbowtext">metalevel</span><br><progress data-color="blue" max="${levelRequire(mlv,5,0)}" value="${mxp}"></progress><br><br>`
 }
 function tabstuff(tab){
-  let tabnumbers = [0,1,2]
+  let tabnumbers = [0,1,2,3]
   for (let i in tabnumbers){
     let k = tabnumbers[i]
     if (k == tab){
@@ -87,19 +88,28 @@ function hardreset(){
   }
 }
 function assignonclick(){
-  let tabnumbers = ["0","1","2"]
+  let tabnumbers = ["0","1","2","3"]
   for (let i in tabnumbers){
     gel("tabbutton"+tabnumbers[i]).onclick = () => {tabstuff(parseInt(tabnumbers[i]))}
   }
   gel("hardresetbutton").onclick = () => {hardreset()}
+  gel("pawprestigebutton").onclick = () => {pawsprestige()}
+  gel("powerbutton").onclick = () => {if (player.powertime <= 0){player.powertime = 300}}
+}
+function cansee(){
+  if (player.paws >= 1){gel("tabbutton3").display = "inline"}
+  else {gel("tabbutton3").display = "none"}
+  if (player.powertime >= 0){gel("powerbutton").textContent = `Power Active!\n${format(player.powertime)}s`}
+  else {gel("powerbutton").textContent = "Activate Power"}
 }
 load()
 tabstuff(1)
 assignonclick()
 setInterval(() => {
   ticktime += (Date.now() - player.lasttick)/1000
+  player.powertime -= ticktime
   player.lasttick = Date.now()
-  player.xp[0] += ticktime*10*highRanks(player.levels,0)*levelMult(player.levels[0])
+  player.xp[0] += ticktime*10*highRanks(player.levels,0)*levelMult(player.levels[0])*(player.powertime>0 ? 2 :1 )
   for (let i = 0; i < player.levels.length; i++){
     if (player.xp[i] >= levelRequire(player.levels[i],i)){
       player.xp[i] -= levelRequire(player.levels[i],i)
@@ -118,6 +128,7 @@ setInterval(() => {
   }
   if (player.levels[0] >= 50){gel("metalevel").innerHTML = makeInnerHTMLForMetalevel(player.metalevel,player.metaxp)}
   gel("leveltime").innerHTML = makeInnerHTMLForLevelTime(player.levels,player.xp)
+  cansee()
   ticktime = 0
 },1000/60)
 setInterval(() => {
