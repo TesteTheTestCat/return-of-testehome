@@ -97,10 +97,11 @@ function assignonclick(){
   gel("powerbutton").onclick = () => {if (player.powertime <= 0){player.powertime = 300}}
 }
 function cansee(){
-  if (player.paws >= 1){gel("tabbutton3").display = "inline"}
-  else {gel("tabbutton3").display = "none"}
+  if (player.paws >= 1){gel("tabbutton3").style.display = "inline"}
+  else {gel("tabbutton3").style.display = "none"}
   if (player.powertime >= 0){gel("powerbutton").textContent = `Power Active!\n${format(player.powertime)}s`}
   else {gel("powerbutton").textContent = "Activate Power"}
+  gel("pawsamount").textContent = 2+(2*player.paws)
 }
 load()
 tabstuff(1)
